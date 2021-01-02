@@ -28,10 +28,11 @@ function setup() {
   createCanvas(320, 240); //背景顏色
   // Start classifying
   // The sound model will continuously listen to the microphone
+  ThunkableWebviewerExtension.postMessage("ready");
   classifier.classify(gotResult); //開始辨識
 }
 
-function draw() {
+function draw() { //一有變數就執行，會執行多次
   background(0);
   // Draw the label in the canvas
   fill(255);
@@ -50,4 +51,5 @@ function gotResult(error, results) {  //回傳執行結果或錯誤
   // The results are in an array ordered by confidence.
   // console.log(results[0]);
   label = results[0].label;
+  ThunkableWebviewerExtension.postMessage(label);
 }

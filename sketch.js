@@ -16,19 +16,19 @@ let classifier;
 let label = "listening";
 
 // Teachable Machine model URL:
-let soundModelURL = 'https://teachablemachine.withgoogle.com/models/h3p9R41J/model.json';
+let soundModelURL = 'https://kunhan0821.github.io/frog1100102/model.json';
 
 
-function preload() {
+function preload() { //網頁尚未載進時執行
   // Load the model
-  classifier = ml5.soundClassifier(soundModelURL);
+  classifier = ml5.soundClassifier(soundModelURL); //ml5:第五代
 }
 
 function setup() {
-  createCanvas(320, 240);
+  createCanvas(320, 240); //背景顏色
   // Start classifying
   // The sound model will continuously listen to the microphone
-  classifier.classify(gotResult);
+  classifier.classify(gotResult); //開始辨識
 }
 
 function draw() {
@@ -42,7 +42,7 @@ function draw() {
 
 
 // The model recognizing a sound will trigger this event
-function gotResult(error, results) {
+function gotResult(error, results) {  //回傳執行結果或錯誤
   if (error) {
     console.error(error);
     return;
